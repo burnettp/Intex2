@@ -10,21 +10,20 @@ using System.Threading.Tasks;
 namespace Intex2.Controllers
 {
     public class HomeController : Controller
-    {
-
-        
+    {   
         private CrashContext _context { get; set; }
 
         public HomeController(CrashContext temp)
         {
             _context = temp;
+        }
             
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
 
             var CrashInfo = _context.Crashes.Where(x => x.CRASH_ID == "11281387").ToList();
