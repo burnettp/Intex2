@@ -11,30 +11,37 @@ namespace Intex2.Controllers
 {
     public class HomeController : Controller
     {
+
         
         private CrashContext _context { get; set; }
 
         public HomeController(CrashContext temp)
         {
             _context = temp;
+            
+        public IActionResult Index()
+        {
+            return View();
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
 
             var CrashInfo = _context.Crashes.Where(x => x.CRASH_ID == "11281387").ToList();
             return View(CrashInfo);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Crash()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Analyses()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
+        }
+        public IActionResult Summary()
+        {
+            return View();
         }
     }
 }
