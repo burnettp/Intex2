@@ -11,16 +11,19 @@ namespace Intex2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
+        private CrashContext _context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(CrashContext temp)
         {
-            _logger = logger;
+            _context = temp;
         }
 
         public IActionResult Index()
         {
-            return View();
+
+            var CrashInfo = _context.Crashes.Where(x => x.CRASH_ID == "11281387").ToList();
+            return View(CrashInfo);
         }
 
         public IActionResult Privacy()
