@@ -24,11 +24,6 @@ namespace Intex2.Controllers
         {
             return View();
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
         
         public IActionResult Crash(string CrashID)
         {
