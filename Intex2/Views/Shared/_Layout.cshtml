@@ -41,6 +41,9 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Crash Data - Intex 2</a>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Inference" asp-action="Score">Predict Severity</a>
+                </li>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                 </div>
