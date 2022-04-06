@@ -1,0 +1,211 @@
+﻿@{
+    ViewData["Title"] = "Predict Severity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CrashPredictionModel
+
+@*Create a style for a vertical line*@
+<style>
+    .vertical-line {
+        display: inline-block;
+        border-left: 2px solid;
+        margin: 0 10px;
+        height: 900px;
+    }
+</style>
+
+<div class="row">
+
+    <form class="col-6" method="post">
+        <h2 class="text-center">Caclulate Severity</h2>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @*Show the errors*@
+
+        <div class="form-group">
+            <label asp-for="PedestrianTrue">Was there a pedestrian involved?</label>
+            <select asp-for="PedestrianTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BicyclistTrue">Was there a bicycle involved?</label>
+            <select asp-for="BicyclistTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MotorcycleTrue">Was there a motorcycle involved?</label>
+            <select asp-for="MotorcycleTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImproperRestraintTrue">Was a seatbelt improperly worn?</label>
+            <select asp-for="ImproperRestraintTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="UnrestrainTrue">Was a seatbelt not worn at all?</label>
+            <select asp-for="UnrestrainTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DuiTrue">Was someone involved driving under the influence?</label>
+            <select asp-for="DuiTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="IntersectionTrue">Did the accident occur at an intersection?</label>
+            <select asp-for="IntersectionTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="WildAnimalTrue">Was a wild animal involved?</label>
+            <select asp-for="WildAnimalTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DomesticAnimalTrue">Was there a domestic animal involved?</label>
+            <select asp-for="DomesticAnimalTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OverturnRolloverTrue">Did a vehicle overturn or rollover?</label>
+            <select asp-for="OverturnRolloverTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CommercialTrue">Was a commercial motor vehicle involved?</label>
+            <select asp-for="CommercialTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TeenageDriverTrue">Was a teenage driver involved?</label>
+            <select asp-for="TeenageDriverTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OlderDriverTrue">Was an older driver involved?</label>
+            <select asp-for="OlderDriverTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NightDarkTrue">Was it dark at and night at the time of the accident?</label>
+            <select asp-for="NightDarkTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SingleVehicleTrue">Was there only a single vehicle involved?</label>
+            <select asp-for="SingleVehicleTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DistractedTrue">Was a distracted driver involved?</label>
+            <select asp-for="DistractedTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DrowsyDrivingTrue">Was a drowsy driver involved?</label>
+            <select asp-for="DrowsyDrivingTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="RoadwayDepartureTrue">Did a vehicle depart from the road?</label>
+            <select asp-for="RoadwayDepartureTrue">
+                <option value=0.0>No</option>
+                <option value=1.0>Yes</option>
+                @*Because we dummy coded it, it will be expecting 1s and 0s for all of them*@
+            </select><br />
+        </div>
+
+        @*Button to do the calculations*@
+        <button type="submit" class="btn btn-primary">Caculate Severity</button>
+
+    </form>
+
+    @*Insert a vertical line to break it up on the page*@
+    <span class="vertical-line"></span>
+
+    <div class="col-5">
+        <h2 class="text-center">Possible Severity Levels</h2>
+
+        @*Display the severity levels*@
+        <h5 style="color: yellowgreen">Level 1: No Injury</h5>
+        <h5 class="text-success">Level 2: Possible Injury</h5>
+        <h5 style="color: orange">Level 3: Suspected Minor Injury</h5>
+        <h5 style="color: darkorange">Level 4: Suspected Serious Injury</h5>
+        <h5 class="text-danger">Level 5: Fatal</h5><br />
+
+        @*Display predicted severity level*@
+        <h5>Predicted Severity Level:</h5>
+        <h4><strong>@ViewBag.Pred</strong></h4>
+    </div>
+
+</div>

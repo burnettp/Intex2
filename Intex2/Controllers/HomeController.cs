@@ -2,6 +2,7 @@
 using Intex2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,9 +12,7 @@ using System.Threading.Tasks;
 namespace Intex2.Controllers
 {
     public class HomeController : Controller
-    {
-
-
+    {   
         private CrashContext _context { get; set; }
 
         public HomeController(CrashContext temp)
@@ -21,7 +20,7 @@ namespace Intex2.Controllers
             _context = temp;
         }
 
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }
@@ -30,7 +29,7 @@ namespace Intex2.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Crash(string CrashID)
         {
 
@@ -39,6 +38,12 @@ namespace Intex2.Controllers
 
             return View(crashdetail);
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public IActionResult Analyses()
         {
             return View();
@@ -69,9 +74,7 @@ namespace Intex2.Controllers
                 }
 
             };
-
             
-
             // Pass into the viewbag what level of clearace someone has.
             // Conditional statements used in summary page to determine what is displayed
 
@@ -105,9 +108,6 @@ namespace Intex2.Controllers
             return View();
         }
 
-
-
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -139,7 +139,6 @@ namespace Intex2.Controllers
                 return RedirectToAction("Index");
             }
         }
-
 
         [HttpGet]
         public IActionResult Delete(string crashID)

@@ -9,3 +9,8 @@
     <p>Link to the summary for now<a asp-controller="home" asp-action="Summary"> Summary</a></p>
 </div>
   
+@foreach (var x in Model)
+            {
+                <p>@x.CRASH_ID</p>
+                <p>@x.COUNTY_NAME</p>
+            }
