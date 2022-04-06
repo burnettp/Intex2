@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["SearchResults"] = "SearchResults";
+}
+
+
+@model List<Crash>
+
+<h1>Search Results</h1>
+<a asp-controller="Home" asp-action="Summary">Back to Crash Database</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Crash ID</td>
+            <td>Date and Time</td>
+            <td>Route</td>
+            <td>City</td>
+            <td>County</td>
+            <td>Crash Severity</td>
+
+            <td></td>
+
+            @if (ViewBag.user == 1)
+            {
+                <td></td>
+            }
+            @if (ViewBag.user == 1)
+            {
+                <td></td>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.CRASH_ID</td>
+                <td>@x.CRASH_DATETIME</td>
+                <td>@x.ROUTE</td>
+                <td>@x.CITY</td>
+                <td>@x.COUNTY_NAME</td>
+                @if (x.CRASH_SEVERITY_ID == 0)
+                {
+                    <td>NA</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 1)
+                {
+                    <td>No Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 2)
+                {
+                    <td>Possible Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 3)
+                {
+                    <td>Suspected Minor Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 4)
+                {
+                    <td>Suspected Serious Injury</td>
+                }
+                @if (x.CRASH_SEVERITY_ID == 5)
+                {
+                    <td>Fatal</td>
+                }
+
+
+                <td><a asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
+
+                @if (ViewBag.user == 1)
+                {
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+                }
+                @if (ViewBag.user == 1)
+                {
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

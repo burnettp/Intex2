@@ -2,4 +2,121 @@
     ViewData["Summary"] = "Summary";
 }
 
-<h1>Summary Page</h1>
+@model CrashViewModel
+
+
+
+<div>
+    <div class="text-center">
+        <h1>Summary Page</h1>
+        @if (ViewBag.user == 1)
+        {
+            <p>Admin have the abilitiy to add, edit, and delete crash records from the database. If you would like to create a crash record, follow the button below.</p>
+            <a asp-controller="home" asp-action="Create" class="btn btn-info">Create New Crash Record</a>
+        }
+
+    </div>
+        <br />
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h4>Filter</h4>
+                    <div id="County">
+                        <vc:county></vc:county>
+                    </div>
+                </div>
+
+
+
+                <div class="col-10 text-center">
+                    <div class="col-5"></div>
+                    <div class="col-5">
+                        <form method="post">
+                            <h3>Search</h3>
+                            <p>Search for a specifc accident by the crash ID number</p>
+                            <div class="form-group">
+                                
+                                <input type="text" name="searchedCrash" class="form-control" placeholder="Enter Crash ID Here" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col"></div>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td>Crash ID</td>
+                                <td>Date and Time</td>
+                                <td>Route</td>
+                                <td>City</td>
+                                <td>County</td>
+                                <td>Crash Severity</td>
+
+                                <td></td>
+
+                                @if (ViewBag.user == 1)
+                                {
+                                    <td></td>
+                                }
+                                @if (ViewBag.user == 1)
+                                {
+                                    <td></td>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model.Crashes)
+                            {
+                                <tr>
+                                    <td>@x.CRASH_ID</td>
+                                    <td>@x.CRASH_DATETIME</td>
+                                    <td>@x.ROUTE</td>
+                                    <td>@x.CITY</td>
+                                    <td>@x.COUNTY_NAME</td>
+                                    @if (x.CRASH_SEVERITY_ID == 0)
+                                    {
+                                        <td>NA</td>
+                                    }
+                                    @if (x.CRASH_SEVERITY_ID == 1)
+                                    {
+                                        <td>No Injury</td>
+                                    }
+                                    @if (x.CRASH_SEVERITY_ID == 2)
+                                    {
+                                        <td>Possible Injury</td>
+                                    }
+                                    @if (x.CRASH_SEVERITY_ID == 3)
+                                    {
+                                        <td>Suspected Minor Injury</td>
+                                    }
+                                    @if (x.CRASH_SEVERITY_ID == 4)
+                                    {
+                                        <td>Suspected Serious Injury</td>
+                                    }
+                                    @if (x.CRASH_SEVERITY_ID == 5)
+                                    {
+                                        <td>Fatal</td>
+                                    }
+
+
+                                    <td><a asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
+
+                                    @if (ViewBag.user == 1)
+                                    {
+                                        <td><a asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+                                    }
+                                    @if (ViewBag.user == 1)
+                                    {
+                                        <td><a asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div page-model="@Model.PageInfo" page-action="Summary"></div>
+                </div>
+            </div>
+        </div>
+    </div>

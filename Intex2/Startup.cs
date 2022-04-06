@@ -68,6 +68,23 @@ namespace Intex2
 
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute("countypage",
+                    "{county}/Page{pageNum}",
+                    new { Controller = "Home", action = "Summary" });
+
+                endpoints.MapControllerRoute("Paging", 
+                    "Page{pageNum}", 
+                    new { controller = "Home", action = "Summary", pageNum = 1 });
+
+                endpoints.MapControllerRoute("county",
+                    "{county}",
+                    new { Controller = "Home", action = "Summary", pageNum = 1 });
+
+                endpoints.MapControllerRoute("SearchResults",
+                    "SearchResults/{crashid}",
+                    new { Controller = "Home", action = "SearchResults"});
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -2,4 +2,59 @@
     ViewData["Crash"] = "Crash";
 }
 
+@model List<Crash>
+
 <h1>Individual crash data will be shown here</h1>
+
+@foreach (var x in Model)
+{
+    <h3>Crash ID: @x.CRASH_ID</h3>
+    <br />
+    <p>Date and Time: @x.CRASH_DATETIME</p>
+    <p>Route: @x.ROUTE</p>
+    <p>Mile point: @x.MILEPOINT</p>
+    <p>Lat UTM Y: @x.LAT_UTM_Y</p>
+    <p>Long UTM X: @x.LONG_UTM_X</p>
+    <p>Main Road: @x.MAIN_ROAD_NAME</p>
+    <p>City: @x.CITY</p>
+    <p>County: @x.COUNTY_NAME</p>
+    @if (x.CRASH_SEVERITY_ID == 1)
+    {
+        <p>Crash Severity: No Injury</p>
+    }
+    @if (x.CRASH_SEVERITY_ID == 2)
+    {
+        <p>Crash Severity: Possible Injury</p>
+    }
+    @if (x.CRASH_SEVERITY_ID == 3)
+    {
+        <p>Crash Severity: Suspected Minor Injury</p>
+    }
+    @if (x.CRASH_SEVERITY_ID == 4)
+    {
+        <p>Crash Severity: Suspected Serious Injury</p>
+    }
+    @if (x.CRASH_SEVERITY_ID == 5)
+    {
+        <p>Crash Severity: Fatal</p>
+    }
+    <p>Work Zone Related: @x.WORK_ZONE_RELATED</p>
+    <p>Pedestrian Involved: @x.PEDESTRIAN_INVOLVED</p>
+    <p>Bicyclist Involved: @x.BICYCLIST_INVOLVED</p>
+    <p>Motorcycle Involved: @x.MOTORCYCLE_INVOLVED</p>
+    <p>Improper Restraint: @x.IMPROPER_RESTRAINT</p>
+    <p>Unrestrained: @x.UNRESTRAINED</p>
+    <p>DUI: @x.DUI</p>
+    <p>Intersection Related: @x.INTERSECTION_RELATED</p>
+    <p>Wild Animal Related: @x.WILD_ANIMAL_RELATED</p>
+    <p>Domestic Animal Related: @x.DOMESTIC_ANIMAL_RELATED</p>
+    <p>Overtrun Rollover: @x.OVERTURN_ROLLOVER</p>
+    <p>Commerical Motor Vehicle: @x.COMMERCIAL_MOTOR_VEH_INVOLVED</p>
+    <p>Teenage Driver Involved: @x.TEENAGE_DRIVER_INVOLVED</p>
+    <p>Old Driver Involved: @x.OLDER_DRIVER_INVOLVED</p>
+    <p>Dark Night: @x.NIGHT_DARK_CONDITION</p>
+    <p>Single Vehicle: @x.SINGLE_VEHICLE</p>
+    <p>Distraced Driving: @x.DISTRACTED_DRIVING</p>
+    <p>Drowsy Driving: @x.DROWSY_DRIVING</p>
+    <p>Roadway Departure: @x.ROADWAY_DEPARTURE</p>
+}
