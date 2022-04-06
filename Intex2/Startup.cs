@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime;
 
 namespace Intex2
 {
@@ -37,13 +38,9 @@ namespace Intex2
                 options.UseMySql(Configuration["ConnectionStrings:DbConnection"]);
             });
 
-            // Setup Identity without Amazon Cognito
-            //services.AddDbContext<AppIdentityDbContext>(options =>
-            //    options.UseMySql(Configuration["ConnectionStrings:DbConnection"]));
-            
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-              //.AddEntityFrameworkStores<AppIdentityDbContext>();
-
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("C:/Users/natha/source/repos/Intex2/Intex2/Models/intex2.onnx")
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,16 +64,23 @@ namespace Intex2
             app.UseAuthentication();
             app.UseAuthorization();
 
+            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapControllerRoute(
+                    name: "inference",
+
+                    defaults: new { controller = "Inference", action = "Score" },
+
+                    pattern: ""
+                    );
                 endpoints.MapRazorPages();
             });
-
-            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

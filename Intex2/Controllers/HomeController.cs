@@ -1,6 +1,7 @@
 ﻿using Intex2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,5 +44,6 @@ namespace Intex2.Controllers
         {
             return View();
         }
+
     }
 }
