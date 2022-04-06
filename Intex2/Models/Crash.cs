@@ -11,11 +11,11 @@ namespace Intex2.Models
         [Key]
         public string CRASH_ID { get; set; }
         public DateTime CRASH_DATETIME { get; set; }
-        public string ROUTE { get; set; }
-        public double MILEPOINT { get; set; }
-        public double LAT_UTM_Y { get; set; }
+        public string? ROUTE { get; set; }
+        public double? MILEPOINT { get; set; }
+        public double? LAT_UTM_Y { get; set; }
 
-        public double LONG_UTM_X { get; set; }
+        public double? LONG_UTM_X { get; set; }
 
         public string MAIN_ROAD_NAME { get; set; }
 
@@ -23,7 +23,7 @@ namespace Intex2.Models
 
         public string COUNTY_NAME { get; set; }
 
-        public int CRASH_SEVERITY_ID { get; set; }
+        public int? CRASH_SEVERITY_ID { get; set; }
 
         public string WORK_ZONE_RELATED { get; set; }
 

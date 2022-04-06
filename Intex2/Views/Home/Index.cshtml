@@ -1,15 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model List<Crash>
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>to our website about Utah drivers.</p>
+    <p>Link to the summary for now<a asp-controller="home" asp-action="Summary"> Summary</a></p>
 </div>
   
-@foreach (var x in Model)
-            {
-                <p>@x.CRASH_ID</p>
-                <p>@x.COUNTY_NAME</p>
-            }
