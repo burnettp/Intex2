@@ -28,8 +28,11 @@ namespace Intex2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
+
             services.AddControllersWithViews();
 
+            // Connects MySQL database as the backend DB - hosted on AWS
             services.AddDbContext<CrashContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:DbConnection"]);
@@ -76,7 +79,7 @@ namespace Intex2
 
                     pattern: ""
                     );
-
+                endpoints.MapRazorPages();
             });
         }
     }
