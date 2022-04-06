@@ -17,11 +17,6 @@ namespace Intex2.Controllers
         {
             _context = temp;
         }
-            
-        public IActionResult Login()
-        {
-            return View();
-        }
 
         public IActionResult Index()
         {
@@ -34,6 +29,12 @@ namespace Intex2.Controllers
         {
             return View();
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public IActionResult Analyses()
         {
             return View();

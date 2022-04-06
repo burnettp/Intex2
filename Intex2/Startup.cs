@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Intex2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +29,18 @@ namespace Intex2
         {
             services.AddControllersWithViews();
 
+            // Connects MySQL database as the backend DB - hosted on AWS
             services.AddDbContext<CrashContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:DbConnection"]);
             });
+
+            // Setup Identity without Amazon Cognito
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseMySql(Configuration["ConnectionStrings:DbConnection"]));
+            
+            services.AddIdentity<IdentityUser, IdentityRole>()
+              .AddEntityFrameworkStores<AppIdentityDbContext>();
 
         }
 
@@ -64,6 +71,8 @@ namespace Intex2
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
