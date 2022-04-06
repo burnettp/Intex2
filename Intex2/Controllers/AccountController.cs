@@ -1,5 +1,4 @@
-﻿using Amazon.AspNetCore.Identity.Cognito;
-using Intex2.Models.ViewModels;
+﻿using Intex2.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;

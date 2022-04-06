@@ -27,6 +27,8 @@ namespace Intex2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
+
             services.AddControllersWithViews();
 
             // Connects MySQL database as the backend DB - hosted on AWS
@@ -36,11 +38,11 @@ namespace Intex2
             });
 
             // Setup Identity without Amazon Cognito
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseMySql(Configuration["ConnectionStrings:DbConnection"]));
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //    options.UseMySql(Configuration["ConnectionStrings:DbConnection"]));
             
-            services.AddIdentity<IdentityUser, IdentityRole>()
-              .AddEntityFrameworkStores<AppIdentityDbContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+              //.AddEntityFrameworkStores<AppIdentityDbContext>();
 
         }
 
@@ -70,9 +72,11 @@ namespace Intex2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
 
-            IdentitySeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
