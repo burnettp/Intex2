@@ -25,10 +25,7 @@ namespace Intex2.Controllers
             return View();
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+      
         
         public IActionResult Crash(string CrashID)
         {
@@ -75,14 +72,7 @@ namespace Intex2.Controllers
 
             };
             
-            // Pass into the viewbag what level of clearace someone has.
-            // Conditional statements used in summary page to determine what is displayed
-
-            // if the user is an admin
-            ViewBag.user = 1;
-
-            // if the user is just a reader
-            // ViewBag.user = 2;
+            
 
             return View(x);
         }
@@ -91,13 +81,6 @@ namespace Intex2.Controllers
         public IActionResult Summary(string searchedCrash)
         {
             var specificCrash = _context.Crashes.Where(x => x.CRASH_ID == searchedCrash).ToList();
-
-
-            // if the user is an admin
-            ViewBag.user = 1;
-
-            // if the user is just a reader
-            // ViewBag.user = 2;
 
             return View("SearchResults", specificCrash);
         }
@@ -115,9 +98,9 @@ namespace Intex2.Controllers
 
             var CrashInfo = _context.Crashes.ToList();
 
+            
             // This creates a new index without causing issues
             ViewBag.NewIndex = CrashInfo.Count + 1;
-
 
             return View(x);
         }
