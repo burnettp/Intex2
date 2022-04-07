@@ -2,9 +2,122 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://getbootstrap.com/docs/4.0/examples/carousel/ -->
+<html lang="en">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>to our website about Utah drivers.</p>
-    <p>Link to the summary for now<a asp-controller="home" asp-action="Summary"> Summary</a></p>
-</div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Carousel Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./Carousel Template for Bootstrap_files/carousel.css" rel="stylesheet">
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1056.0" data-gr-ext-installed="">
+
+    @*Display heading at the top*@
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        <div class="px-0">
+            <h1 class="display-4 text-center">Utah Motor Vehicle Collision Application</h1>
+            <p class="lead my-3 text-center">Analyze, predict, and examine Utah crash data to help identify areas to improve, develop, and change.</p>
+        </div>
+    </div>
+
+    <main role="main">
+
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://images.unsplash.com/photo-1635930919419-f935f8902b0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" width="140" height="140">
+                    <h2>Summary Data</h2>
+                    <p>Analyze summary data of crashes by clicking the following button. Additionally, more information about this feature can be found below.</p>
+                    <p><a class="btn btn-info" role="button" asp-controller="Home" asp-action="Summary">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2016/11/21/18/20/bright-1847006_1280.jpg" width="140" height="140">
+                    <h2>Prediction Calculator</h2>
+                    <p>Predict severity levels of hypothetical crashes by clicking the following button. Additionally, more information about this feature can be found below.</p>
+                    <p><a class="btn btn-info" role="button" asp-controller="Inference" asp-action="Score">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://cdn.pixabay.com/photo/2020/08/09/14/25/business-5475658_1280.jpg" width="140" height="140">
+                    <h2>Analyses</h2>
+                    <p>Examine analyses of Utah crash data by clicking the following button. Additionally, more information about this feature can be found below.</p>
+                    <p><a class="btn btn-info" role="button" asp-controller="Home" asp-action="Analyses">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Summary Data. <span class="text-muted">Search, filter, and CRUD functionality.</span></h2>
+                    <p class="lead">This feature displays three years' worth of collision data for Utah. The database can be filtered and searched to enable users to have quick, accurate results. Additionally, Admin users have the ability to create, read, update, and delete (CRUD) records to keep the data up-to-date and current.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="https://images.unsplash.com/photo-1605602560252-2d23ec73d48a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80" width="500" height="500" />
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Prediction Calculator. <span class="text-muted">Calculate crash severity.</span></h2>
+                    <p class="lead">This feature enables users to predict the severity of a hypothetical collision based on the factors that have the strongest relationship to the crash severity. Through implementing a machine learning model, these predictions pinpoint which factors are most determinant of crash severity and therefore indicate which factors should be studied further in looking to reduce vehicle collisions in Utah.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" data-holder-rendered="true" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Analyses for Crash Data in Utah. <span class="text-muted">Data from 2016-2019.</span></h2>
+                    <p class="lead">This feature portrays several different visuals and analyses using the Utah collision data for the years 2016, 2017, and 2019. Unfortunately, collision data for the year 2018 was yeeted out of existence and therefore could not be utilized in this application. These analyses outline important factors and discoveries from the database to enable users to better recognize areas to improve, develop, and change.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="https://cdn.pixabay.com/photo/2017/01/22/23/13/big-data-2001190_1280.jpg" data-holder-rendered="true" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+        </div><!-- /.container -->
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Carousel Template for Bootstrap_files/jquery-3.2.1.slim.min.js.download" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="./Carousel Template for Bootstrap_files/popper.min.js.download"></script>
+    <script src="./Carousel Template for Bootstrap_files/bootstrap.min.js.download"></script>
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg>
+</body>
+
+</html>
