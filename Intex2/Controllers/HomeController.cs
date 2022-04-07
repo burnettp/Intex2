@@ -175,5 +175,11 @@ namespace Intex2.Controllers
 
             return View(specificCrash);
         }
+
+        //Privacy policy page
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
     }
 }

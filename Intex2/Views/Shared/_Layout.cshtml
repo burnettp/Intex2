@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    @*CSP*@
+    <meta http-equiv=“Content-Security-Policy”
+          content=”default-src ‘self’; img-src *”>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Intex</title>
@@ -10,6 +13,7 @@
 </head>
 <body>
     <header>
+        @*Navbar to have clean navigation -- We will keep the default navbar because it looks professional*@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Crash Data - Intex 2</a>
@@ -43,8 +47,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Intex2
+        @*Privacy policy linked here*@
+        <div class="container text-center">
+            &copy; 2022 - Intex2 | Check out our privacy policy <a asp-controller="Home" asp-action="PrivacyPolicy">here</a>.
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
