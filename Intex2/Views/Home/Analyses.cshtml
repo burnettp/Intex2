@@ -2,4 +2,181 @@
     ViewData["Analyses"] = "Analyses";
 }
 
-<h1>Analyses</h1>
+@*<html>
+     <head>
+        <style>
+        {
+            box-sizing: border-box;
+        }
+        /* Set additional styling options for the columns*/
+        .column {
+        float: left;
+        width: 50%;
+        }
+
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        </style>
+     </head>
+     <body>
+        <div class="row">
+            <div class="column">
+                <h2>Column 1</h2>
+
+            </div>
+            <div class="column">
+                <h2></h2>
+                <p>Data..</p>
+            </div>
+        </div>
+     </body>
+    </html>*@
+
+<div class="container px-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xxl-6">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder mb-3">Analysis</h1>
+                <p class="lead fw-normal text-muted mb-4">Below are statistics about the data. This is a demo; if you decide to use our services, software that can continuously update graphs and charts
+                will be implemented to give real-time visualizations to help with the process of understanding where the problem lies and finding solutions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/Accident Features Totals by Year.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">How many accidents involved each of the different accident features?</h2>
+                <p class="lead fw-normal text-muted mb-0">Accidents can be in multiple categories.</p>
+                <p class="lead fw-normal text-muted mb-0">Notice: there is not a visual improvement over the 4 year timeframe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/Average Accident Severity Per Feature Per Year.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">What is the average severity per accident feature?</h2>
+                <p class="lead fw-normal text-muted mb-0">Severity ranges from 1 to 5:</p>
+                <p class="lead fw-normal text-muted mb-0">Level 1: No Injury </p>
+                <p class="lead fw-normal text-muted mb-0">Level 2: Possible Injury </p>
+                <p class="lead fw-normal text-muted mb-0">Level 3: Suspected Minor Injury</p>
+                <p class="lead fw-normal text-muted mb-0">Level 4: Suspected Serious Injury</p>
+                <p class="lead fw-normal text-muted mb-0">Level 5: Fatal</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/NumAccidentsPerSevPerHour.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">At what times of day do the most accidents occur, and how severe?</h2>
+                <p class="lead fw-normal text-muted mb-0">Notice: most accidents happen during regular commute times, especially in the afternoon/early evening.</p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="py-5" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/NumAccidentsPerSevPerMonth.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">During what times of the year do the most accidents occur and how severe?</h2>
+                <p class="lead fw-normal text-muted mb-0">Notice: more frequent, but less severe accidents happen in the winter, while more severe accidents occur during summer months.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/Top 10 Features with Top 5 Cities.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">What is the relationship between different features and cities in Utah?</h2>
+                <p class="lead fw-normal text-muted mb-0">Notice: accidents involving pedestrians and bikers occur at a bigger rate in Salt Lake City than in the other top 5 cities.</p>
+                <p class="lead fw-normal text-muted mb-0">Could it be inferred that this is because it is more walkable than the other cities? </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/Percentages of features as city accidents.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">What percentage of cities' total accidents are made up of the top 10 features?</h2>
+                <p class="lead fw-normal text-muted mb-0">Notice: 55% of accidents outside of city limits only involve one car. Additionally, almost 15% of accidents outside of city limits involve a rollover.</p>
+                <p class="lead fw-normal text-muted mb-0">How can we educate drivers about these kinds of accidents?</p>
+            </div>
+        </div>
+    </div>
+ </section>
+
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/Top 20 Streets.png" alt="..." /></div>
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">Which streets in the state have the most accidents?</h2>
+                <p class="lead fw-normal text-muted mb-0">Think about:</p>
+                <p class="lead fw-normal text-muted mb-0">Are there aspects of the road that could be changed to decrease accidents?</p>
+                <p class="lead fw-normal text-muted mb-0">*The database does not differentiate between different main streets, so most cities' main streets are grouped together.'</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bolder">What is the relationship between Level 5 severity and accident features?</h2>
+            </div>
+            <div class="col-lg-6">
+                <p class="lead fw-normal text-muted mb-0">Percentage is the amount of fatalities out of total accident percentage per feature.</p>
+                <p class="lead fw-normal text-muted mb-0">Number is the amount of Level 5 accidents per feature.</p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/2016PieGraph.png" alt="..." /></div>
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/2017PieGraph.png" alt="..." /></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/2018PieGraph.png" alt="..." /></div>
+            <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="~/img/2019PieGraph.png" alt="..." /></div>
+        </div>
+    </div>
+    </div>
+</section>
