@@ -41,6 +41,17 @@ namespace Intex2
             services.AddSingleton<InferenceSession>(
                 new InferenceSession("C:/Users/parke/source/repos/Intex2/Intex2/Models/intex2.onnx")
             );
+
+            // Google authenticator
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("Authentication:Google");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,8 +74,6 @@ namespace Intex2
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            
 
             app.UseEndpoints(endpoints =>
             {
