@@ -9,41 +9,49 @@
 <div>
     <div class="text-center">
         <h1>Summary Page</h1>
-        @if (ViewBag.user == 1)
-        {
-            <p>Admin have the abilitiy to add, edit, and delete crash records from the database. If you would like to create a crash record, follow the button below.</p>
-            <a asp-controller="home" asp-action="Create" class="btn btn-info">Create New Crash Record</a>
-        }
 
-    </div>
+        <p>Admin have the abilitiy to add, edit, and delete crash records from the database. If you would like to create a crash record, follow the button below.</p>
+
+        <br />
+
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <form method="post">
+                    <h3>Search</h3>
+                    <p>Search for a specifc accident by the crash ID number</p>
+                    <div class="form-group">
+
+                        <input type="text" name="searchedCrash" class="form-control" placeholder="Enter Crash ID Here" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <p>If you would like to create a new crash record in the database, follow the link below.</p>
+        <a asp-controller="home" asp-action="Create" class="btn btn-info">Create New Crash Record</a>
+
+        </div>
         <br />
         <br />
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <h4>Filter</h4>
-                    <div id="County">
-                        <vc:county></vc:county>
+                    <div class="justify-content-center">
+                        <h4>Filter By County</h4>
+                        <div id="County">
+                            <vc:county></vc:county>
+                        </div>
                     </div>
                 </div>
 
 
 
                 <div class="col-10 text-center">
-                    <div class="col-5"></div>
-                    <div class="col-5">
-                        <form method="post">
-                            <h3>Search</h3>
-                            <p>Search for a specifc accident by the crash ID number</p>
-                            <div class="form-group">
-                                
-                                <input type="text" name="searchedCrash" class="form-control" placeholder="Enter Crash ID Here" />
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                    <div class="col"></div>
-
+                    
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -101,21 +109,25 @@
                                     }
 
 
-                                    <td><a asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
+                                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
 
-                                    @if (ViewBag.user == 1)
-                                    {
-                                        <td><a asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
-                                    }
-                                    @if (ViewBag.user == 1)
-                                    {
-                                        <td><a asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
-                                    }
+                                   
+                                    <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+                                    
+                                    
+                                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
+                                    
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <div page-model="@Model.PageInfo" page-action="Summary"></div>
+
+                    <div class="col-8">
+                        <div page-model="@Model.PageInfo" page-action="Summary" page-classes-enabled="true"
+                             page-class="btn " page-class-normal="btn-outline-dark"
+                             page-class-selected="btn-primary" class="btn-group pull-right m-1">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

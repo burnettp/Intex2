@@ -6,7 +6,9 @@
 @model List<Crash>
 
 <h1>Search Results</h1>
-<a asp-controller="Home" asp-action="Summary">Back to Crash Database</a>
+
+<br />
+<br />
 
 <table class="table table-bordered">
     <thead>
@@ -20,14 +22,11 @@
 
             <td></td>
 
-            @if (ViewBag.user == 1)
-            {
+           
                 <td></td>
-            }
-            @if (ViewBag.user == 1)
-            {
+           
                 <td></td>
-            }
+            
         </tr>
     </thead>
     <tbody>
@@ -65,17 +64,19 @@
                 }
 
 
-                <td><a asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
 
-                @if (ViewBag.user == 1)
-                {
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
-                }
-                @if (ViewBag.user == 1)
-                {
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
-                }
+                
+                <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+                
+               
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
+                
             </tr>
         }
     </tbody>
 </table>
+
+<br />
+<br />
+<a asp-controller="Home" asp-action="Summary" class="btn btn-primary">Back to Crash Database</a>
