@@ -4,8 +4,6 @@
 
 @model CrashViewModel
 
-
-
 <div>
     <div class="text-center">
         <h1>Summary Page</h1>
@@ -48,12 +46,10 @@
                     </div>
                 </div>
 
-
-
                 <div class="col-10 text-center">
-                    
-                    <table class="table table-bordered">
-                        <thead>
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="bg-dark text-white">
                             <tr>
                                 <td>Crash ID</td>
                                 <td>Date and Time</td>
@@ -64,14 +60,10 @@
 
                                 <td></td>
 
-                                @if (ViewBag.user == 1)
-                                {
-                                    <td></td>
-                                }
-                                @if (ViewBag.user == 1)
-                                {
-                                    <td></td>
-                                }
+                                <td></td>
+
+                                <td></td>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -111,12 +103,12 @@
 
                                     <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
 
-                                   
+
                                     <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
-                                    
-                                    
+
+
                                     <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
-                                    
+
                                 </tr>
                             }
                         </tbody>

@@ -6,9 +6,8 @@
 
 @foreach (var x in Model)
 {
-    <h3>All Data for Crash ID: @x.CRASH_ID</h3>
-    <br />
-    <ul class="list-group">
+    <h3 class="text-center">All Data for Crash ID: @x.CRASH_ID</h3>
+    <ul class="list-group list-group-flush">
         <li class="list-group-item">Date and Time: @x.CRASH_DATETIME</li>
         <li class="list-group-item">Route: @x.ROUTE</li>  
         <li class="list-group-item">Mile point: @x.MILEPOINT</li>
