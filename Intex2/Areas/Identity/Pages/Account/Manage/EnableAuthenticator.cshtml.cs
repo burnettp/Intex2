@@ -125,6 +125,7 @@ namespace Intex2.Areas.Identity.Pages.Account.Manage
             SharedKey = FormatKey(unformattedKey);
 
             var email = await _userManager.GetEmailAsync(user);
+            //var email = "test@test.com";
             AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
         }
 

@@ -21,6 +21,7 @@ namespace Intex2.Areas.Identity
                         context.Configuration.GetConnectionString("DbConnection")));
 
                 services.AddDefaultIdentity<Intex2User>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
             });
         }

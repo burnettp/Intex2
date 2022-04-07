@@ -40,15 +40,29 @@
         <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Crash Data - Intex 2</a>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Inference" asp-action="Score">Predict Severity</a>
-                </li>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Summary">Summary Data</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inference" asp-action="Score">Prediction Calculator</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Analyses">Analyses</a>
+                        </li>
+
+                        <li class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                            <partial name="_LoginPartial" />
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </nav>
+</nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

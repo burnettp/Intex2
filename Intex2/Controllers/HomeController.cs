@@ -1,5 +1,6 @@
 ﻿using Intex2.Models;
 using Intex2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML.OnnxRuntime;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace Intex2.Controllers
 {
+    // Requires Admin or Reader role to view anything in Home Controller
+    [Authorize(Roles = "Admin, Reader")]
     public class HomeController : Controller
     {   
         private CrashContext _context { get; set; }
@@ -20,12 +23,12 @@ namespace Intex2.Controllers
             _context = temp;
         }
 
+        // Allows unauthenticated users to view the Index page
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-
-      
         
         public IActionResult Crash(string CrashID)
         {
@@ -36,6 +39,8 @@ namespace Intex2.Controllers
             return View(crashdetail);
         }
 
+        // Allow anyone to create an account with Reader role (role assigned in /Areas/Pages/Account/Register.cshtml
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -91,6 +96,8 @@ namespace Intex2.Controllers
             return View();
         }
 
+        // Only Admin can create
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -105,6 +112,7 @@ namespace Intex2.Controllers
             return View(x);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Create(Crash c)
         {
@@ -123,6 +131,7 @@ namespace Intex2.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(string crashID)
         {
@@ -133,6 +142,7 @@ namespace Intex2.Controllers
             return View(specificCrash);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Delete(Crash crashDeleted)
         {
@@ -142,6 +152,7 @@ namespace Intex2.Controllers
             return RedirectToAction("Summary");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(string crashID)
         {
@@ -150,6 +161,7 @@ namespace Intex2.Controllers
             return View(specificCrash);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Edit(Crash changedCrash)
         {
@@ -158,7 +170,6 @@ namespace Intex2.Controllers
 
             return RedirectToAction("Summary");
         }
-
 
         public IActionResult SearchResults(string crashid)
         {
