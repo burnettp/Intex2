@@ -51,7 +51,8 @@ namespace Intex2
             // Connects MySQL database as the backend DB - hosted on AWS
             services.AddDbContext<CrashContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:DbConnection"]);
+                // Environment variable handles connection string for #security
+                options.UseMySql(Environment.GetEnvironmentVariable("DbConnectionEnv"));
             });
 
             services.AddSingleton<InferenceSession>(

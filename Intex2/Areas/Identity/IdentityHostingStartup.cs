@@ -18,8 +18,9 @@ namespace Intex2.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseMySql(
-                        context.Configuration.GetConnectionString("DbConnection")));
-
+                        
+                        // Uses an environment variable to set connection string to protect the variables
+                        Environment.GetEnvironmentVariable("DbConnectionEnv")));
                 services.AddDefaultIdentity<Intex2User>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
