@@ -4,57 +4,59 @@
 
 @model List<Crash>
 
-<h1>Individual crash data will be shown here</h1>
-
 @foreach (var x in Model)
 {
-    <h3>Crash ID: @x.CRASH_ID</h3>
+    <h3>All Data for Crash ID: @x.CRASH_ID</h3>
     <br />
-    <p>Date and Time: @x.CRASH_DATETIME</p>
-    <p>Route: @x.ROUTE</p>
-    <p>Mile point: @x.MILEPOINT</p>
-    <p>Lat UTM Y: @x.LAT_UTM_Y</p>
-    <p>Long UTM X: @x.LONG_UTM_X</p>
-    <p>Main Road: @x.MAIN_ROAD_NAME</p>
-    <p>City: @x.CITY</p>
-    <p>County: @x.COUNTY_NAME</p>
-    @if (x.CRASH_SEVERITY_ID == 1)
-    {
-        <p>Crash Severity: No Injury</p>
-    }
-    @if (x.CRASH_SEVERITY_ID == 2)
-    {
-        <p>Crash Severity: Possible Injury</p>
-    }
-    @if (x.CRASH_SEVERITY_ID == 3)
-    {
-        <p>Crash Severity: Suspected Minor Injury</p>
-    }
-    @if (x.CRASH_SEVERITY_ID == 4)
-    {
-        <p>Crash Severity: Suspected Serious Injury</p>
-    }
-    @if (x.CRASH_SEVERITY_ID == 5)
-    {
-        <p>Crash Severity: Fatal</p>
-    }
-    <p>Work Zone Related: @x.WORK_ZONE_RELATED</p>
-    <p>Pedestrian Involved: @x.PEDESTRIAN_INVOLVED</p>
-    <p>Bicyclist Involved: @x.BICYCLIST_INVOLVED</p>
-    <p>Motorcycle Involved: @x.MOTORCYCLE_INVOLVED</p>
-    <p>Improper Restraint: @x.IMPROPER_RESTRAINT</p>
-    <p>Unrestrained: @x.UNRESTRAINED</p>
-    <p>DUI: @x.DUI</p>
-    <p>Intersection Related: @x.INTERSECTION_RELATED</p>
-    <p>Wild Animal Related: @x.WILD_ANIMAL_RELATED</p>
-    <p>Domestic Animal Related: @x.DOMESTIC_ANIMAL_RELATED</p>
-    <p>Overtrun Rollover: @x.OVERTURN_ROLLOVER</p>
-    <p>Commerical Motor Vehicle: @x.COMMERCIAL_MOTOR_VEH_INVOLVED</p>
-    <p>Teenage Driver Involved: @x.TEENAGE_DRIVER_INVOLVED</p>
-    <p>Old Driver Involved: @x.OLDER_DRIVER_INVOLVED</p>
-    <p>Dark Night: @x.NIGHT_DARK_CONDITION</p>
-    <p>Single Vehicle: @x.SINGLE_VEHICLE</p>
-    <p>Distraced Driving: @x.DISTRACTED_DRIVING</p>
-    <p>Drowsy Driving: @x.DROWSY_DRIVING</p>
-    <p>Roadway Departure: @x.ROADWAY_DEPARTURE</p>
+    <ul class="list-group">
+        <li class="list-group-item">Date and Time: @x.CRASH_DATETIME</li>
+        <li class="list-group-item">Route: @x.ROUTE</li>  
+        <li class="list-group-item">Mile point: @x.MILEPOINT</li>
+        <li class="list-group-item">Lat UTM Y: @x.LAT_UTM_Y</li>
+        <li class="list-group-item">Long UTM X: @x.LONG_UTM_X</li>
+        <li class="list-group-item">Main Road: @x.MAIN_ROAD_NAME</li>
+        <li class="list-group-item">City: @x.CITY</li>
+        <li class="list-group-item">County: @x.COUNTY_NAME</li>
+
+        @if (x.CRASH_SEVERITY_ID == 1)
+        {
+            <li class="list-group-item">Crash Severity: No Injury</li>
+        }
+        @if (x.CRASH_SEVERITY_ID == 2)
+        {
+            <li class="list-group-item">Crash Severity: Possible Injury</li>
+        }
+        @if (x.CRASH_SEVERITY_ID == 3)
+        {
+            <li class="list-group-item">Crash Severity: Suspected Minor Injury</li>
+        }
+        @if (x.CRASH_SEVERITY_ID == 4)
+        {
+            <li class="list-group-item">Crash Severity: Suspected Serious Injury</li>
+        }
+        @if (x.CRASH_SEVERITY_ID == 5)
+        {
+            <li class="list-group-item">Crash Severity: Fatal</li>
+        }
+        <li class="list-group-item">Work Zone Related: @x.WORK_ZONE_RELATED</li>
+        <li class="list-group-item">Pedestrian Involved: @x.PEDESTRIAN_INVOLVED</li>
+        <li class="list-group-item">Bicyclist Involved: @x.BICYCLIST_INVOLVED</li>
+        <li class="list-group-item">Motorcycle Involved: @x.MOTORCYCLE_INVOLVED</li>
+        <li class="list-group-item">Improper Restraint: @x.IMPROPER_RESTRAINT</li>
+        <li class="list-group-item">Unrestrained: @x.UNRESTRAINED</li>
+        <li class="list-group-item">DUI: @x.DUI</li>
+        <li class="list-group-item">Intersection Related: @x.INTERSECTION_RELATED</li>
+        <li class="list-group-item">Wild Animal Related: @x.WILD_ANIMAL_RELATED</li>
+        <li class="list-group-item">Domestic Animal Related: @x.DOMESTIC_ANIMAL_RELATED</li>
+        <li class="list-group-item">Overtrun Rollover: @x.OVERTURN_ROLLOVER</li>
+        <li class="list-group-item">Commerical Motor Vehicle: @x.COMMERCIAL_MOTOR_VEH_INVOLVED</li>
+        <li class="list-group-item">Teenage Driver Involved: @x.TEENAGE_DRIVER_INVOLVED</li>
+        <li class="list-group-item">Old Driver Involved: @x.OLDER_DRIVER_INVOLVED</li>
+        <li class="list-group-item">Dark Night: @x.NIGHT_DARK_CONDITION</li>
+        <li class="list-group-item">Single Vehicle: @x.SINGLE_VEHICLE</li>
+        <li class="list-group-item">Distraced Driving: @x.DISTRACTED_DRIVING</li>
+        <li class="list-group-item">Drowsy Driving: @x.DROWSY_DRIVING</li>
+        <li class="list-group-item">Roadway Departure: @x.ROADWAY_DEPARTURE</li>
+
+    </ul>
 }
