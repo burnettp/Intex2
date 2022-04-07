@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["SearchResults"] = "SearchResults";
+    ViewData["Title"] = "Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -23,9 +24,9 @@
             <td></td>
 
             <td></td>
-           
+
             <td></td>
-            
+
         </tr>
     </thead>
     <tbody>
@@ -65,12 +66,12 @@
 
                 <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
 
-                
-                <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
-                
-               
+
+                <td><a class="btn btn-success text-white" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+
+
                 <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
-                
+
             </tr>
         }
     </tbody>

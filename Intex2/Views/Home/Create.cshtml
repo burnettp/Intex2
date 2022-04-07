@@ -1,8 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewData["Create"] = "Create";
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @model Crash
@@ -33,17 +31,17 @@
 
                     <div class="form-floating mb-3">
                         <label asp-for="MILEPOINT">Mile Point: </label>
-                        <input asp-for="MILEPOINT" class="form-control" placeholder="Enter the Mile Point..."/>
+                        <input asp-for="MILEPOINT" class="form-control" placeholder="Enter the Mile Point..." />
                     </div>
 
                     <div class="form-floating mb-3">
                         <label asp-for="LAT_UTM_Y">Lattitude: </label>
-                        <input asp-for="LAT_UTM_Y" class="form-control" placeholder="Enter the Lattitude..."/>
+                        <input asp-for="LAT_UTM_Y" class="form-control" placeholder="Enter the Lattitude..." />
                     </div>
 
                     <div class="form-floating mb-3">
                         <label asp-for="LONG_UTM_X">Longitude: </label>
-                        <input asp-for="LONG_UTM_X" class="form-control"  placeholder="Enter the Longitude..."/>
+                        <input asp-for="LONG_UTM_X" class="form-control" placeholder="Enter the Longitude..." />
                     </div>
 
                     <div class="form-floating mb-3">

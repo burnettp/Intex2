@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Summary"] = "Summary";
+    ViewData["Title"] = "Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @model CrashViewModel
@@ -32,95 +33,95 @@
         <p>If you would like to create a new crash record in the database, follow the link below.</p>
         <a asp-controller="home" asp-action="Create" class="btn btn-info">Create New Crash Record</a>
 
-        </div>
-        <br />
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <div class="justify-content-center">
-                        <h4>Filter By County</h4>
-                        <div id="County">
-                            <vc:county></vc:county>
-                        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <div class="justify-content-center">
+                    <h4>Filter By County</h4>
+                    <div id="County">
+                        <vc:county></vc:county>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-10 text-center">
+            <div class="col-10 text-center">
 
-                    <table class="table table-bordered table-striped">
-                        <thead class="bg-dark text-white">
+                <table class="table table-bordered table-striped">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <td>Crash ID</td>
+                            <td>Date and Time</td>
+                            <td>Route</td>
+                            <td>City</td>
+                            <td>County</td>
+                            <td>Crash Severity</td>
+
+                            <td></td>
+
+                            <td></td>
+
+                            <td></td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Crashes)
+                        {
                             <tr>
-                                <td>Crash ID</td>
-                                <td>Date and Time</td>
-                                <td>Route</td>
-                                <td>City</td>
-                                <td>County</td>
-                                <td>Crash Severity</td>
+                                <td>@x.CRASH_ID</td>
+                                <td>@x.CRASH_DATETIME</td>
+                                <td>@x.ROUTE</td>
+                                <td>@x.CITY</td>
+                                <td>@x.COUNTY_NAME</td>
+                                @if (x.CRASH_SEVERITY_ID == 0)
+                                {
+                                    <td>NA</td>
+                                }
+                                @if (x.CRASH_SEVERITY_ID == 1)
+                                {
+                                    <td>No Injury</td>
+                                }
+                                @if (x.CRASH_SEVERITY_ID == 2)
+                                {
+                                    <td>Possible Injury</td>
+                                }
+                                @if (x.CRASH_SEVERITY_ID == 3)
+                                {
+                                    <td>Suspected Minor Injury</td>
+                                }
+                                @if (x.CRASH_SEVERITY_ID == 4)
+                                {
+                                    <td>Suspected Serious Injury</td>
+                                }
+                                @if (x.CRASH_SEVERITY_ID == 5)
+                                {
+                                    <td>Fatal</td>
+                                }
 
-                                <td></td>
 
-                                <td></td>
+                                <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
 
-                                <td></td>
+
+                                <td><a class="btn btn-success text-white" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
+
+
+                                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
 
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var x in Model.Crashes)
-                            {
-                                <tr>
-                                    <td>@x.CRASH_ID</td>
-                                    <td>@x.CRASH_DATETIME</td>
-                                    <td>@x.ROUTE</td>
-                                    <td>@x.CITY</td>
-                                    <td>@x.COUNTY_NAME</td>
-                                    @if (x.CRASH_SEVERITY_ID == 0)
-                                    {
-                                        <td>NA</td>
-                                    }
-                                    @if (x.CRASH_SEVERITY_ID == 1)
-                                    {
-                                        <td>No Injury</td>
-                                    }
-                                    @if (x.CRASH_SEVERITY_ID == 2)
-                                    {
-                                        <td>Possible Injury</td>
-                                    }
-                                    @if (x.CRASH_SEVERITY_ID == 3)
-                                    {
-                                        <td>Suspected Minor Injury</td>
-                                    }
-                                    @if (x.CRASH_SEVERITY_ID == 4)
-                                    {
-                                        <td>Suspected Serious Injury</td>
-                                    }
-                                    @if (x.CRASH_SEVERITY_ID == 5)
-                                    {
-                                        <td>Fatal</td>
-                                    }
+                        }
+                    </tbody>
+                </table>
 
-
-                                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Crash" asp-route-CrashID="@x.CRASH_ID">View Details</a></td>
-
-
-                                    <td><a class="btn btn-warning" asp-controller="Home" asp-action="Edit" asp-route-CrashID="@x.CRASH_ID">Edit</a></td>
-
-
-                                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-CrashID="@x.CRASH_ID">Delete</a></td>
-
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-
-                    <div class="col-8">
-                        <div page-model="@Model.PageInfo" page-action="Summary" page-classes-enabled="true"
-                             page-class="btn " page-class-normal="btn-outline-dark"
-                             page-class-selected="btn-primary" class="btn-group pull-right m-1">
-                        </div>
+                <div class="col-8">
+                    <div page-model="@Model.PageInfo" page-action="Summary" page-classes-enabled="true"
+                         page-class="btn " page-class-normal="btn-outline-dark"
+                         page-class-selected="btn-primary" class="btn-group pull-right m-1">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
