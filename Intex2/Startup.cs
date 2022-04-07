@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
+using System.Net;
 
 namespace Intex2
 {
@@ -29,6 +30,21 @@ namespace Intex2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            // Enable HSTS
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(.01);
+            });
+
+            // Enable HTTPS Redirection
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+                options.HttpsPort = 443;
+            });
 
             services.AddControllersWithViews();
 

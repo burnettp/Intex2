@@ -76,8 +76,6 @@ namespace Intex2.Controllers
                 }
 
             };
-            
-            
 
             return View(x);
         }
