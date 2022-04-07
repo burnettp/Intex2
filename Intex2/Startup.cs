@@ -40,7 +40,7 @@ namespace Intex2
 
             services.AddSingleton<InferenceSession>(
 
-                new InferenceSession("C:/Users/natha/source/repos/Intex2/Intex2/wwwroot/intex2.onnx")
+                new InferenceSession("C:/Users/parke/source/repos/Intex2/Intex2/wwwroot/intex2.onnx")
 
             );
         }
