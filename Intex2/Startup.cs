@@ -57,7 +57,7 @@ namespace Intex2
 
             services.AddSingleton<InferenceSession>(
 
-                new InferenceSession("../Intex2/wwwroot/intex2.onnx")
+                new InferenceSession("wwwroot/intex2.onnx")
 
             );
         }
@@ -75,7 +75,7 @@ namespace Intex2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
