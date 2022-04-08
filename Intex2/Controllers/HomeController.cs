@@ -1,5 +1,6 @@
 ﻿using Intex2.Models;
 using Intex2.Models.ViewModels;
+using Intex2.odels.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
