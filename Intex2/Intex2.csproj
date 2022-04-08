@@ -35,7 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\intex2.onnx" />
+    <None Include="wwwroot\intex2.onnx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

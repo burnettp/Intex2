@@ -39,12 +39,12 @@ namespace Intex2
                 options.MaxAge = TimeSpan.FromDays(.01);
             });
 
-            // Enable HTTPS Redirection
-            services.AddHttpsRedirection(options =>
-            {
-                options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
-                options.HttpsPort = 443;
-            });
+            //Enable HTTPS Redirection
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+            //    options.HttpsPort = 443;
+            //});
 
             services.AddControllersWithViews();
 
@@ -54,10 +54,10 @@ namespace Intex2
                 // Environment variable handles connection string for #security
                 options.UseMySql(Environment.GetEnvironmentVariable("DbConnectionEnv"));
             });
-
+            
             services.AddSingleton<InferenceSession>(
 
-                new InferenceSession("../Intex2/wwwroot/intex2.onnx")
+                new InferenceSession("wwwroot/intex2.onnx")
 
             );
         }
@@ -75,7 +75,7 @@ namespace Intex2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
